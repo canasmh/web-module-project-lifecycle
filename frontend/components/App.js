@@ -35,7 +35,6 @@ export default class App extends React.Component {
             return item;
           }
         });
-        console.log(`New Todos: ${newTodos}`)
         this.setState({
           todos: newTodos
         });
