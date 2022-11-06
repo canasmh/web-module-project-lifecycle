@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import TodoList from './TodoList';
 
 const URL = 'http://localhost:9000/api/todos'
 
@@ -23,9 +24,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <>
-        {this.state.todos && this.state.todos.map(item => <p>{item.name}</p>)}
-      </>
+        <TodoList data={this.state.todos}/>
     )
   }
 }
