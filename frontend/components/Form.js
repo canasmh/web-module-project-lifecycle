@@ -12,7 +12,7 @@ export default class Form extends React.Component {
         <input onChange={this.props.change} placeholder='Add new Item' name="add" value={this.props.current}/>
         <button type="submit">Add</button>
         <br/>
-        <button type="button">Hide Completed</button>
+        <button onClick={this.props.toggle} type="button">Hide Completed</button>
       </form>
     )
   }

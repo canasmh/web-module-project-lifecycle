@@ -10,7 +10,8 @@ export default class App extends React.Component {
     super();
     this.state = {
       todos: [],
-      currentTodo: ""
+      currentTodo: "",
+      hideCompleted: false
     }
   }
 
@@ -53,8 +54,10 @@ export default class App extends React.Component {
         })
       })
       .catch(err => console.log(`There was an error: ${err}`))
-    
-    
+  }
+
+  toggleHide = () => {
+    this.setState({hideCompleted: !this.state.hideCompleted})
   }
 
   handleChange = (event) => {
@@ -63,8 +66,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoList data={this.state.todos} patch={this.patchData}/>
-        <Form change={this.handleChange} post={this.postData} current={this.state.currentTodo}/>
+        <TodoList data={this.state.hideCompleted ? this.state.todos.filter(item => !item.completed) : this.state.todos} patch={this.patchData}/>
+        <Form change={this.handleChange} post={this.postData} current={this.state.currentTodo} toggle={this.toggleHide}/>
       </div>
         
     )
