@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import TodoList from './TodoList';
+import Form from './Form';
 
 const URL = 'http://localhost:9000/api/todos'
 
@@ -24,7 +25,11 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <div>
         <TodoList data={this.state.todos}/>
+        <Form />
+      </div>
+        
     )
   }
 }
