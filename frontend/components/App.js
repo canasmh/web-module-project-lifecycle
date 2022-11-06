@@ -9,7 +9,8 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: []
+      todos: [],
+      currentTodo: ""
     }
   }
 
@@ -42,11 +43,28 @@ export default class App extends React.Component {
       })
       .catch(err => console.log(`There was an error: ${err}`))
   }
+
+  postData = () => {
+    axios.post(URL, {name: this.state.currentTodo})
+      .then(res => {
+        this.setState({
+          currentTodo: "",
+          todos: [...this.state.todos, res.data.data]
+        })
+      })
+      .catch(err => console.log(`There was an error: ${err}`))
+    
+    
+  }
+
+  handleChange = (event) => {
+    this.setState({currentTodo: event.target.value})
+  }
   render() {
     return (
       <div>
         <TodoList data={this.state.todos} patch={this.patchData}/>
-        <Form />
+        <Form change={this.handleChange} post={this.postData} current={this.state.currentTodo}/>
       </div>
         
     )
