@@ -67,7 +67,7 @@ export default class App extends React.Component {
     return (
       <div>
         <TodoList data={this.state.hideCompleted ? this.state.todos.filter(item => !item.completed) : this.state.todos} patch={this.patchData}/>
-        <Form change={this.handleChange} post={this.postData} current={this.state.currentTodo} toggle={this.toggleHide}/>
+        <Form change={this.handleChange} post={this.postData} current={this.state.currentTodo} toggle={this.toggleHide} hidden={this.state.hideCompleted}/>
       </div>
         
     )
